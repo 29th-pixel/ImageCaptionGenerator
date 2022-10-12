@@ -1,8 +1,12 @@
 import uvicorn
 from fastapi import FastAPI, status, responses, File, UploadFile, Form, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from keras.models import load_model
 
 app = FastAPI(debug=True)
+
+model = load_model(
+    'D:/Learn/Projects/ImageCaptionGenerator/BackEnd/Model/72percentmodel.h5')
 
 origins = [
     "http://localhost",
@@ -23,7 +27,7 @@ app.add_middleware(
 
 
 @app.post('/genCaption')
-def captiongen():
+def captiongen(file: UploadFile = File(...)):
     pass
 
 
