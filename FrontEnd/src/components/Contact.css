@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.header{
+    width: 100%;
+    position: relative; 
+    margin-top: 3rem;
+
+}
+.header h1{
+    text-align: center;
+
+}
+.developers{
+    margin-top: 3rem;
+}
+.devlist{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
+}
+li{
+    font-size: 2rem;
+}

@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-content{
+    background-color: wheat;
+    /* height: 600px; */
+    padding: 225px 20px 264px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.heading{
+    margin: auto;
+    text-align: center;
+}
+.heading h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.header p{
+    text-align: center;
+    width: auto;
+    
+}
+
+
+
+.information-content{
+    background-color: rgb(207, 182, 134);
+    /* height: 600px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 10px;
+    
+    
+}
+h2{
+    color: white;
+    font-size: 3rem;
+    padding: 0 10px 40px 10px;
+    
+
+}
+.information-content img{
+    height: 300px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card1{
+    padding: 50px 40px;
+}
+.card1 img{
+    border-radius: 10%;
+    margin-bottom: 20px;
+}
+.card1 p{
+    text-align: center;
+    width: 300px;
+}
+
+
+.footercontent{
+    background-color: black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footercontent p{
+    color: aliceblue;
+}
