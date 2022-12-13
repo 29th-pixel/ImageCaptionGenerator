@@ -1,12 +1,10 @@
 import uvicorn
+import os
 from fastapi import FastAPI, status, responses, File, UploadFile, Form, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
-from keras.models import load_model
+from predictor import predict
 
 app = FastAPI(debug=True)
-
-model = load_model(
-    'D:/Learn/Projects/ImageCaptionGenerator/BackEnd/Model/72percentmodel.h5')
 
 origins = [
     "http://localhost",
@@ -24,6 +22,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+vocabPath = os.path.dirname(os.getcwd()).replace(
+    '\\', '/') + '/ImageCaptionGenerator/BackEnd/Model/vocab.npy'
+weightPath = os.path.dirname(os.getcwd()).replace(
+    '\\', '/') + '/ImageCaptionGenerator/BackEnd/Model/mine_model_weights.h5'
+
+predictor = predict(vocabPath, weightPath)
 
 
 @app.post('/genCaption')

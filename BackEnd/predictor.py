@@ -96,9 +96,3 @@ class predict:
 
             text_in.append(sampled_word)
         print(final)
-
-
-# if __name__ == "__main__":
-#     p = predict('D:/Learn/Projects/ImageCaptionGenerator/BackEnd/Model/vocab.npy',
-#                 'D:/Learn/Projects/ImageCaptionGenerator/BackEnd/Model/mine_model_weights.h5')
-#     p.prediction('D:/b8b237ee-7cfe-4eab-b79b-dac389707899.jpg')
