@@ -51,13 +51,8 @@ class predict:
         print("="*150)
         print("RESNET MODEL LOADED")
 
-    def prediction(self, imgPath):
-        # global model, resnet, vocab, inv_vocab
-
-        # print("="*50)
-        # print("IMAGE SAVED")
-
-        image = cv2.imread(imgPath)
+    def prediction(self, image):
+        # image = cv2.imread(imgPath)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         image = cv2.resize(image, (224, 224))
@@ -95,4 +90,5 @@ class predict:
                 final = final + ' ' + sampled_word
 
             text_in.append(sampled_word)
-        print(final)
+        
+        return final

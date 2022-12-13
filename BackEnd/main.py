@@ -3,8 +3,11 @@ import os
 from fastapi import FastAPI, status, responses, File, UploadFile, Form, Depends, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from predictor import predict
+import cv2
+import numpy as np
 
-app = FastAPI(debug=True)
+app = FastAPI(title='Captioning API',
+              description="API for generating captions of an image", version="1.0", debug=True)
 
 origins = [
     "http://localhost",
@@ -31,9 +34,17 @@ weightPath = os.path.dirname(os.getcwd()).replace(
 predictor = predict(vocabPath, weightPath)
 
 
+def load_image_into_numpy_array(data):
+    npimg = np.frombuffer(data, np.uint8)
+    frame = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
+    return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+
 @app.post('/genCaption')
-def captiongen(file: UploadFile = File(...)):
-    pass
+async def captiongen(file: UploadFile = File(...)):
+    image = load_image_into_numpy_array(await file.read())
+    caption = predictor.prediction(image)
+    return {"Caption - ": caption}
 
 
 if __name__ == "__main__":
