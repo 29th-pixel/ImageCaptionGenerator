@@ -44,6 +44,7 @@ def load_image_into_numpy_array(data):
 async def captiongen(file: UploadFile = File(...)):
     image = load_image_into_numpy_array(await file.read())
     caption = predictor.prediction(image)
+    print(caption)
     return {"Caption - ": caption}
 
 
