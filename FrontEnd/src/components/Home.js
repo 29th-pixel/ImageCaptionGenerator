@@ -1,34 +1,59 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import {useState} from 'react'
 import './Home.css';
-export class Home extends Component {
 
-    state = {
-        previewImg: ""
+
+export const Home = () => {
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [isFilePicked, setIsFilePicked] = useState(false);
+
+    const changeHandler = (event) => {
+        setSelectedFile(event.target.files[0]);
+        setIsFilePicked(true);
+    };
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const formData2 = new FormData();
+        formData2.append(
+            "file",
+            selectedFile,
+        );
+
+        const requestOptions = {
+            method: 'POST',
+            body: formData2
+        };
+        fetch('http://127.0.0.1:5000/genCaption', requestOptions)  
+            .then(response => response.json())
+            .then(function (response) {
+                console.log('response')
+                console.log(response)
+            });
     }
 
-    imgSelectHandler(e) {
-
-        if (e.target.files.length !== 0) {
-            this.setState({
-                previewImg: URL.createObjectURL(e.target.files[0])
-            })
-        }
-    }
-    render() {
-        return (
+    return (
             <>
+            {/* <script language="Javascript">
+             function showInput() {
+            a = {{caption}};
+            document.getElementById("display").innerHTML = a;
+            }
+            </script> */}
                 <center>
                     <h1>Upload the image</h1>
                     <hr />
-                    <input type="file" onChange={this.imgSelectHandler.bind(this)} />
+                    <form onSubmit={handleSubmit}>
+                    <input type="file" onChange={changeHandler}/>
                     <hr />
-                    <img src={this.state.previewImg} alt="preview" height="250" width="250" />
+                    <button type="submit" >SUBMIT</button>
+                    <hr />
+                    <button onclick="viewcaption()" >View Caption</button>
+                    </form>
                 </center>
 
 
             </>
-        );
-    }
-}
-export default Home;
+    );
+}    
