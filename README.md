@@ -1,3 +1,3 @@
 # ImageCaptionGenerator
 
-Generates what is happening in Image
+Generates a caption for an image
