@@ -7,6 +7,7 @@ export const Home = () => {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [isFilePicked, setIsFilePicked] = useState(false);
+    const [data, setData] = useState('');
 
     
     
@@ -37,8 +38,9 @@ export const Home = () => {
                     
                     let a = response;
                     console.log(a);
+                    setData(response.caption);
                     
-                    document.getElementById("output").innerHTML = response;
+                    // document.getElementById("output").innerHTML = response;
             });
         
         
@@ -61,7 +63,7 @@ export const Home = () => {
                     <hr />
                     <button type="submit" >SUBMIT</button>
                     <hr />
-                    <div id="output"></div>
+                    <div id="output">{data}</div>
                     </form>
                 </center>
 
