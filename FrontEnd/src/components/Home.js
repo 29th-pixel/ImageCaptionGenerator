@@ -8,6 +8,9 @@ export const Home = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [isFilePicked, setIsFilePicked] = useState(false);
 
+    
+    
+
     const changeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
         setIsFilePicked(true);
@@ -25,12 +28,21 @@ export const Home = () => {
             method: 'POST',
             body: formData2
         };
-        fetch('http://127.0.0.1:5000/genCaption', requestOptions)  
+        
+        fetch('http://127.0.0.1:5000/genCaption', requestOptions)
             .then(response => response.json())
             .then(function (response) {
-                console.log('response')
-                console.log(response)
+                    // console.log('response')
+                    // console.log(response)
+                    
+                    let a = response;
+                    console.log(a);
+                    
+                    document.getElementById("output").innerHTML = response;
             });
+        
+        
+        
     }
 
     return (
@@ -49,11 +61,11 @@ export const Home = () => {
                     <hr />
                     <button type="submit" >SUBMIT</button>
                     <hr />
-                    <button onclick="viewcaption()" >View Caption</button>
+                    <div id="output"></div>
                     </form>
                 </center>
 
 
             </>
     );
-}    
+} 
