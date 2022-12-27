@@ -1,6 +1,6 @@
 import uvicorn
 import os
-from fastapi import FastAPI, status, responses, File, UploadFile, Form, Depends, BackgroundTasks
+from fastapi import FastAPI, responses, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from predictor import predict
 import cv2
