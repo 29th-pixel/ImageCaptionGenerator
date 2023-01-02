@@ -72,7 +72,7 @@ class predict:
         print("GETING Captions")
 
         count = 0
-        while tqdm(count < 20):
+        while tqdm(count < 30):
 
             count += 1
 
@@ -90,5 +90,4 @@ class predict:
                 final = final + ' ' + sampled_word
 
             text_in.append(sampled_word)
-        
         return final
