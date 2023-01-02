@@ -8,13 +8,12 @@ export const Home = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [isFilePicked, setIsFilePicked] = useState(false);
     const [data, setData] = useState('');
-
-    
-    
+    const [file, setFile] = useState();
 
     const changeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
         setIsFilePicked(true);
+        setFile(URL.createObjectURL(event.target.files[0]));
     };
 
     const handleSubmit = event => {
@@ -33,33 +32,23 @@ export const Home = () => {
         fetch('http://127.0.0.1:5000/genCaption', requestOptions)
             .then(response => response.json())
             .then(function (response) {
-                    // console.log('response')
-                    // console.log(response)
-                    
                     let a = response;
                     console.log(a);
                     setData(response.caption);
-                    
-                    // document.getElementById("output").innerHTML = response;
             });
-        
-        
         
     }
 
     return (
             <>
-            {/* <script language="Javascript">
-             function showInput() {
-            a = {{caption}};
-            document.getElementById("display").innerHTML = a;
-            }
-            </script> */}
+            
                 <center>
                     <h1>Upload the image</h1>
-                    <hr />
+                    <hr style={{color: "white"}} />
                     <form onSubmit={handleSubmit}>
                     <input type="file" onChange={changeHandler}/>
+                    <br/>
+                    <img src={file} />
                     <hr />
                     <button type="submit" >SUBMIT</button>
                     <hr />

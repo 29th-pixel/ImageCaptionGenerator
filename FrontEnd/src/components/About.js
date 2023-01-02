@@ -18,7 +18,7 @@ export class About extends Component {
                             Aim to build
                             an optimal system which can generate semantically and grammatically accurate
                             captions for an image.
-                        </p>
+                        </p>  
                     </div>
                 </div>
 
