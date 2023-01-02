@@ -5,3 +5,4 @@ tensorflow==2.7.0
 opencv_contrib_python==4.5.5.62
 tqdm==4.62.3
 uvicorn==0.15.0
+python-multipart
