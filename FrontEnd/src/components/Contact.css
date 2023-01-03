@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    
 }
 
 .header{
@@ -17,13 +18,17 @@
     margin-top: 3rem;
 }
 .devlist{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    text-align: center;
+    
 }
-ul{
+.devlist{
     list-style: none;
+    
 }
-li{
-    font-size: 2rem;
+.devlist > li{
+    font-size: 1.5rem;
+    margin : 20px;
+    color: black;
+    
 }
+

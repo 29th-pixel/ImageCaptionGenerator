@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import { useState } from 'react'
 import './Home.css';
 
 
@@ -28,35 +28,40 @@ export const Home = () => {
             method: 'POST',
             body: formData2
         };
-        
+
         fetch('http://127.0.0.1:5000/genCaption', requestOptions)
             .then(response => response.json())
             .then(function (response) {
-                    let a = response;
-                    console.log(a);
-                    setData(response.caption);
+                let a = response;
+                console.log(a);
+                setData(response.caption);
             });
-        
+
     }
 
     return (
-            <>
-            
-                <center>
-                    <h1>Upload the image</h1>
-                    <hr style={{color: "white"}} />
-                    <form onSubmit={handleSubmit}>
-                    <input type="file" onChange={changeHandler}/>
-                    <br/>
-                    <img src={file} />
-                    <hr />
-                    <button type="submit" >SUBMIT</button>
-                    <hr />
+        <div>
+
+            <center>
+                <h1>Upload the image</h1>
+                <br />
+                <form onSubmit={handleSubmit}>
+                    <div className="image-uploader">
+                        <input type="file" onChange={changeHandler} className="input-file" />
+                        <br />
+                        <div className="image-box">
+                            <img src={file} className="image-file" />
+                        </div>
+                    </div>
+                    <br/> 
+
+                    <button type="submit" class="btn btn-outline-secondary">SUBMIT</button>
+                    <br/><br/>
                     <div id="output">{data}</div>
-                    </form>
-                </center>
+                </form>
 
+            </center>
 
-            </>
+        </div>
     );
 } 

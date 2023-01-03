@@ -1,0 +1,19 @@
+
+
+.image-file{
+    height: 200px;
+    width: 334px;
+    background-image: url("images/upload-icon.jpg");
+    
+}
+
+.image-uploader{
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+
+}
+#output{
+    font-size: x-large;
+    
+}
