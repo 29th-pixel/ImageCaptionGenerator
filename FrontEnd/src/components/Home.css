@@ -1,19 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 
+.upload-box{
+    
+    width: 70%;
+    height: 12rem;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='black' stroke-width='4' stroke-dasharray='6%2c 9' stroke-dashoffset='48' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 15px;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-.image-file{
-    height: 200px;
-    width: 334px;
-    background-image: url("images/upload-icon.jpg");
+label{
+    margin: auto;
+    font-size: 5rem;
+}
+label:hover{
+    color: black
     
 }
 
-.image-uploader{
+.image-box{
+    margin-top: 1rem;
+    width: 70%;
+    height:8rem;
     display: flex;
     align-items: center;
-    flex-direction: column-reverse;
-
+    justify-content: space-between;
+    padding: 2rem;
+    display: none;
 }
-#output{
-    font-size: x-large;
+
+.image-box2{
+    margin-top: 1rem;
+    width: 70%;
+    height:8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+     
+}
+
+
+.image-preview{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: space-evenly;
     
+    
+}
+img{
+    width: 100px;
+    height:100px;
+    margin-right: 1rem;
+}
+
+
+#output{
+    font-size: x-large;  
 }

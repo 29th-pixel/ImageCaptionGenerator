@@ -9,9 +9,16 @@ export const Home = () => {
     const [isFilePicked, setIsFilePicked] = useState(false);
     const [data, setData] = useState('');
     const [file, setFile] = useState();
+    const [fname, setFname] = useState('');
+    const [style, setStyle] = useState("image-box");
+
+    const changeStyle = () =>{
+        setStyle("image-box2");
+    }
 
     const changeHandler = (event) => {
         setSelectedFile(event.target.files[0]);
+        setFname(event.target.files[0].name);
         setIsFilePicked(true);
         setFile(URL.createObjectURL(event.target.files[0]));
     };
@@ -43,20 +50,27 @@ export const Home = () => {
         <div>
 
             <center>
-                <h1>Upload the image</h1>
-                <br />
-                <form onSubmit={handleSubmit}>
-                    <div className="image-uploader">
-                        <input type="file" onChange={changeHandler} className="input-file" />
-                        <br />
-                        <div className="image-box">
-                            <img src={file} className="image-file" />
-                        </div>
-                    </div>
-                    <br/> 
+                {/* <h1>Upload the image</h1> */}
 
-                    <button type="submit" class="btn btn-outline-secondary">SUBMIT</button>
-                    <br/><br/>
+                <form onSubmit={handleSubmit}>
+
+                    <div className="upload-box">
+                        <input type="file" onChange={changeHandler} onClick={changeStyle} id="image" style={{ display: "none" }} />
+                        <label for="image"><i class="fa-solid fa-cloud-arrow-up"></i></label>
+
+                    </div>
+
+                    <div className={style}>
+                        <div className='image-preview'>
+                            <img src={file} />
+                            <p>{fname}</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-secondary submit-buttion">SUBMIT</button>
+                    </div>
+
+
+
                     <div id="output">{data}</div>
                 </form>
 
