@@ -8,6 +8,7 @@ export const Home = () => {
   const [data, setData] = useState("");
   const [file, setFile] = useState();
   const [fname, setFname] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   const setDefaultValues = () => {
     setIsFilePicked(false);
@@ -25,6 +26,8 @@ export const Home = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setData("");
+    setLoading(true);
     const formData2 = new FormData();
     formData2.append("file", selectedFile);
 
@@ -39,6 +42,7 @@ export const Home = () => {
         let a = response;
         console.log(a);
         setData(response.caption);
+        setLoading(false);
       });
   };
 
@@ -50,6 +54,7 @@ export const Home = () => {
             <input
               type="file"
               onChange={changeHandler}
+              disabled={isLoading}
               onClick={setDefaultValues}
               id="image"
               style={{ display: "none" }}
@@ -69,6 +74,7 @@ export const Home = () => {
 
               <button
                 type="submit"
+                disabled={isLoading}
                 class="btn btn-outline-secondary submit-buttion"
               >
                 SUBMIT
