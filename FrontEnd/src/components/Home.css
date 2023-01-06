@@ -33,18 +33,6 @@ label:hover{
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
-    display: none;
-}
-
-.image-box2{
-    margin-top: 1rem;
-    width: 70%;
-    height:8rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-     
 }
 
 
