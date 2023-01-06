@@ -43,6 +43,12 @@ export const Home = () => {
         console.log(a);
         setData(response.caption);
         setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setData(
+          "Error occured!! Please check your connection or upload a valid image."
+        );
       });
   };
 
