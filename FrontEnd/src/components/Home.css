@@ -51,6 +51,7 @@ img{
 }
 
 
-#output{
-    font-size: x-large;  
+.output{
+    font-size: x-large;
+    margin-top: 4%;  
 }

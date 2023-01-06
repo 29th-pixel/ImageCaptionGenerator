@@ -82,7 +82,10 @@ export const Home = () => {
             </div>
           ) : null}
 
-          <div id="output">{data}</div>
+          {isLoading ? (
+            <div class="output">Generating Caption, Please wait ...</div>
+          ) : null}
+          <div class="output">{data}</div>
         </form>
       </center>
     </div>
