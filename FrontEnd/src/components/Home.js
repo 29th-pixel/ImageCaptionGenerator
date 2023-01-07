@@ -1,7 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Lottie from "react-lottie";
 import Loading from "../assets/Loading.json";
+import { useDropzone } from "react-dropzone";
 import "./Home.css";
 
 export const Home = () => {
@@ -12,6 +12,18 @@ export const Home = () => {
   const [fname, setFname] = useState("");
   const [isLoading, setLoading] = useState(false);
 
+  const onDrop = useCallback((acceptedFiles) => {
+    setSelectedFile(acceptedFiles[0]);
+    setFname(acceptedFiles[0].name);
+    setIsFilePicked(true);
+    setFile(URL.createObjectURL(acceptedFiles[0]));
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: "image/*",
+    multiple: false,
+  });
   const setDefaultValues = () => {
     setIsFilePicked(false);
     setData("");
@@ -69,18 +81,21 @@ export const Home = () => {
         {!isLoading ? (
           <>
             <form onSubmit={handleSubmit}>
-              <div className="upload-box">
+              <div className="upload-box" {...getRootProps()}>
                 <input
                   type="file"
-                  onChange={changeHandler}
                   disabled={isLoading}
-                  onClick={setDefaultValues}
                   id="image"
                   style={{ display: "none" }}
+                  {...getInputProps()}
+                  onChange={changeHandler}
+                  onClick={setDefaultValues}
                 />
                 <label for="image">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
-                  <p style={{ fontSize: 20 }}>Upload the image</p>
+                  <p style={{ fontSize: 20 }}>
+                    Click to Upload an image / Drag & Drop image here
+                  </p>
                 </label>
               </div>
 
@@ -106,7 +121,7 @@ export const Home = () => {
         ) : (
           <>
             <Lottie options={defaultOptionsLoading} height={400} width={400} />
-            <div class="output">Generating Caption, Please wait ...</div>
+            <div className="output">Generating Caption, Please wait ...</div>
           </>
         )}
       </center>
