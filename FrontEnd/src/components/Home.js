@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import Lottie from "react-lottie";
+import Loading from "../assets/Loading.json";
 import "./Home.css";
 
 export const Home = () => {
@@ -16,6 +18,15 @@ export const Home = () => {
     setSelectedFile(null);
     setFile(null);
     setFname("");
+  };
+
+  const defaultOptionsLoading = {
+    loop: true,
+    autoplay: true,
+    animationData: Loading,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -55,44 +66,49 @@ export const Home = () => {
   return (
     <div>
       <center>
-        <form onSubmit={handleSubmit}>
-          <div className="upload-box">
-            <input
-              type="file"
-              onChange={changeHandler}
-              disabled={isLoading}
-              onClick={setDefaultValues}
-              id="image"
-              style={{ display: "none" }}
-            />
-            <label for="image">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-              <p style={{ fontSize: 20 }}>Upload the image</p>
-            </label>
-          </div>
-
-          {isFilePicked ? (
-            <div className="image-box">
-              <div className="image-preview">
-                <img src={file} />
-                <p>{fname}</p>
+        {!isLoading ? (
+          <>
+            <form onSubmit={handleSubmit}>
+              <div className="upload-box">
+                <input
+                  type="file"
+                  onChange={changeHandler}
+                  disabled={isLoading}
+                  onClick={setDefaultValues}
+                  id="image"
+                  style={{ display: "none" }}
+                />
+                <label for="image">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <p style={{ fontSize: 20 }}>Upload the image</p>
+                </label>
               </div>
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                class="btn btn-outline-secondary submit-buttion"
-              >
-                SUBMIT
-              </button>
-            </div>
-          ) : null}
+              {isFilePicked ? (
+                <div className="image-box">
+                  <div className="image-preview">
+                    <img src={file} />
+                    <p>{fname}</p>
+                  </div>
 
-          {isLoading ? (
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    class="btn btn-outline-secondary submit-buttion"
+                  >
+                    SUBMIT
+                  </button>
+                </div>
+              ) : null}
+            </form>
+            <div class="output">{data}</div>
+          </>
+        ) : (
+          <>
+            <Lottie options={defaultOptionsLoading} height={400} width={400} />
             <div class="output">Generating Caption, Please wait ...</div>
-          ) : null}
-          <div class="output">{data}</div>
-        </form>
+          </>
+        )}
       </center>
     </div>
   );
