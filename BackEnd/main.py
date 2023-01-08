@@ -27,9 +27,9 @@ app.add_middleware(
 )
 
 vocabPath = os.path.dirname(os.getcwd()).replace(
-    '\\', '/') + '/BackEnd/Model/vocab.npy'
+    '\\', '/') + '/ImageCaptionGenerator/BackEnd/Model/vocab.npy'
 weightPath = os.path.dirname(os.getcwd()).replace(
-    '\\', '/') + '/BackEnd/Model/mine_model_weights.h5'
+    '\\', '/') + '/ImageCaptionGenerator/BackEnd/Model/mine_model_weights.h5'
 
 predictor = predict(vocabPath, weightPath)
 
